@@ -1,3 +1,4 @@
+from turtle import st
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
@@ -26,8 +27,14 @@ def post(request):
 def put(request):
     pass
 
-def delete(request):
-    pass
+def delete(request, id):
+    students = utility.read_file(db_json_file)
+    for i in range (len(students)):
+        if(students[i]['id'] == id):
+            students.pop(i)
+            utility.write_file(db_json_file,students)
+            return JsonResponse({"message": "Deleted succesfully"},status = 200)
+    return JsonResponse({"Error": "Student id not found"},status = 404)
 
 def get_or_post(request):
     if(request.method == 'GET'):

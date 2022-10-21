@@ -26,19 +26,5 @@
 		"age": 21,
 		"birthdate": "2011-09-13",
 		"class_number": 3
-	},
-	{
-		"id": 5,
-		"name": "Btates Mhamara",
-		"age": 201,
-		"birthdate": "2011-09-13",
-		"class_number": 3
-	},
-	{
-		"id": 6,
-		"name": "Btates mesh mhamara",
-		"age": 201,
-		"birthdate": "2011-09-13",
-		"class_number": 3
 	}
 ]
