@@ -5,10 +5,6 @@ from django.http import HttpResponse
 from .models import Student
 import json
 
-# remove later
-def fuck(request):
-    return HttpResponse("fuck")
-
 # Create your views here.
 class StudentV(View):
     def get(self,request):
@@ -18,8 +14,9 @@ class StudentV(View):
         return JsonResponse({'Error':'no students available'})
 
     def post(self,request):
-        pass
-
+        data = json.loads(request.body)
+        Student.objects.create(**data)
+        return JsonResponse({'Mesage':'Created Sucessfully'})
 
 class StudentID(View):
     def get(self,request, *args, **kwargs):
