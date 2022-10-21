@@ -4,19 +4,24 @@ from django.http import JsonResponse
 from . import utility
 import json
 
+db_json_file = 'student/db.json'
 
 def get(request):
-    return JsonResponse(data = utility.read_file('student/db.json'), safe = False)
+    return JsonResponse(data = utility.read_file(db_json_file), safe = False)
 
 def get_with_id(request ,id):
-    students = utility.read_file('student/db.json')
+    students = utility.read_file(db_json_file)
     for i in range(len(students)):
         if students[i]['id'] == id:
             return JsonResponse(data = students[i], safe = False)
     return JsonResponse({"Error": 'Student id not found'},status = 404)
 
 def post(request):
-    pass
+    students = utility.read_file(db_json_file)
+    data = json.loads(request.body.decode('utf-8'), strict = False)
+    students.append(data)
+    utility.write_file(db_json_file,students)
+    return JsonResponse(data = request.body.decode('utf-8'), safe = False)
 
 def put(request):
     pass
