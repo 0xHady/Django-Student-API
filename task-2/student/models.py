@@ -12,5 +12,5 @@ class Student(models.Model):
     def __str__(self):
         return self.name
 
-    class meta:
+    class Meta:
         db_table = 'student'

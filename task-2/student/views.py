@@ -20,10 +20,15 @@ class StudentV(View):
 
 class StudentID(View):
     def get(self,request, *args, **kwargs):
-        pass
+        data = Student.objects.filter(id=kwargs['id'])
+        return JsonResponse({'Student':data})
 
     def put(self,request, *args, **kwargs):
-        pass
+        student = Student.objects.filter(id=kwargs['id'])
+        student.update(**json.loads(request.body))
+        return JsonResponse({'Mesage':'updated Sucessfully'})
 
     def delete(self,request, *args, **kwargs):
-        pass
+        student = Student.objects.filter(id=kwargs['id'])
+        student.delete()
+        return JsonResponse({'Mesage':'deleted Sucessfully'})
