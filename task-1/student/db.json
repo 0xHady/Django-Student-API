@@ -26,5 +26,12 @@
 		"age": 21,
 		"birthdate": "2011-09-13",
 		"class_number": 3
+	},
+	{
+		"id": 5,
+		"name": "potato potato",
+		"age": 21,
+		"birthdate": "2011-09-13",
+		"class_number": 3
 	}
 ]

@@ -24,8 +24,14 @@ def post(request):
     utility.write_file(db_json_file,students)
     return JsonResponse(data = request.body.decode('utf-8'), safe = False)
 
-def put(request):
-    pass
+def put(request, id):
+    students = utility.read_file(db_json_file)
+    for i in range(len(students)):
+        if(students[i]['id'] == id):
+            students[i] = json.loads(request.body,strict=False)
+            utility.write_file(db_json_file,students)
+            return JsonResponse({"message": "Updated succesfully"},status = 200)
+    return JsonResponse({"Error": "Student id not found"},status = 404)
 
 def delete(request, id):
     students = utility.read_file(db_json_file)
