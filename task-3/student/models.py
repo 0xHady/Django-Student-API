@@ -31,7 +31,7 @@ class Student(models.Model):
     last_name = models.CharField(max_length =100,blank=False)
     class_number = models.IntegerField()
     age = models.IntegerField()
-    email = models.EmailField()#unique = True)
+    email = models.EmailField(unique = True)
 
     parent = models.ForeignKey(Parent,related_name="students",null=True,on_delete=models.SET_NULL)
     subject = models.ManyToManyField(Subject,related_name="students")
