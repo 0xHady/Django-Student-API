@@ -15,5 +15,5 @@
 
 * `http://127.0.0.1:8000/api/x` 
   * GET: retrive student with id = x
-  * PUT: Update studetnt with id = x
+  * PUT: Update studetnt with id = x (need to provide a json body for the student)
   * DELETE: delete student with id = x
