@@ -27,18 +27,18 @@ class Subject(models.Model):
 
 class Student(models.Model):
     id = models.AutoField(primary_key=True)
-    first_name = models.CharField(max_length =100)
-    last_name = models.CharField(max_length =100)
+    first_name = models.CharField(max_length =100,blank=False)
+    last_name = models.CharField(max_length =100,blank=False)
     class_number = models.IntegerField()
     age = models.IntegerField()
-    email = models.EmailField(unique = True)
+    email = models.EmailField()#unique = True)
 
     parent = models.ForeignKey(Parent,related_name="students",null=True,on_delete=models.SET_NULL)
     subject = models.ManyToManyField(Subject,related_name="students")
 
     constraints = [
         models.CheckConstraint(
-            name = 'age greater than 18',check=models.Q(age__gt=5)
+            name = 'age greater than 18',check=models.Q(age__gt=18)
         ),
     ]
 
