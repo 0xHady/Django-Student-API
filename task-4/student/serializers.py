@@ -8,7 +8,7 @@ def check_age(value):
         return ValidationError("Age must be greater than or equal 10")
 
 class StudentSerializer(serializers.ModelSerializer):
-	Age = serializers.IntegerField(validators = [check_age])
+	#age = serializers.IntegerField(validators = [check_age])
 	class Meta:
 		model = Student
 		fields='__all__'

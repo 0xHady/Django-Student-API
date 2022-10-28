@@ -22,15 +22,16 @@ from drf_yasg import openapi
 schema_view = get_schema_view(
     openapi.Info(
         title="Django-Student-API",
-        default_version='v1',
-        #description="Django APIS",
+        default_version='1.0.0',
+        description="Django Student API",
     ),
     public=True,
 )
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('student/', include([
-		path('', include('student.urls'))
-	])),
+    path('student/',include('student.urls')),
     re_path('swagger', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+    re_path(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    re_path(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]

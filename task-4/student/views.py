@@ -4,21 +4,42 @@ from rest_framework.response import Response
 from rest_framework import mixins,generics,status
 from .serializers import *
 from .models import *
+from django.http import JsonResponse
 
 # Create your views here.
-
-def StudentV(APIView):
+class StudentV(APIView):
     def get(self,request):
-        pass
-    def post(self,request):
-        pass
+        data = StudentSerializer(Student.objects.all())
+        return Response(data.data)
 
-def StudentID(APIView):
+    def post(self,request):
+            serializer = StudentSerializer(data=request.data)
+            if(serializer.is_valid()):
+                serializer.save()
+                return Response(serializer.data)
+            return Response(serializer.errors)
+
+class StudentID(APIView):
     def get(self,request,*args, **kwargs):
-        pass
+        try:
+            serializer = StudentSerializer(Student.objects.get(id=kwargs['id']))
+            return Response(serializer.data)
+        except:
+            return Response(status.HTTP_404_NOT_FOUND)
 
     def put(self,request,*args, **kwargs):
-        pass
+        serializer = StudentSerializer(data=request.data,
+        instance=Student.objects.get(id=kwargs['id']))
+        
+        if(serializer.is_valid()):
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)
 
     def delete(self,request,*args, **kwargs):
-        pass
+        try:
+            student = Student.objects.get(id=kwargs['id'])
+            student.delete()
+            return Response(status.HTTP_200_OK)
+        except:
+            return Response(status.HTTP_404_NOT_FOUND)
