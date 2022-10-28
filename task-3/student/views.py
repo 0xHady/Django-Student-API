@@ -8,13 +8,11 @@ import json
 # Create your views here.
 
 class StudentV(View):
-    pass
     def get(self,request):
         data = Student.objects.all()
         if data.count():
             return JsonResponse({'students':list(data.values())})
         return JsonResponse({'Error':'not students available'})
-        pass
 
     def post(self,request):
         try:
