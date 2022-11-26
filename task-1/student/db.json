@@ -1,0 +1,37 @@
+[
+	{
+		"id": 1,
+		"name": "Ahmed Elhady",
+		"age": 21,
+		"birthdate": "2011-09-13",
+		"class_number": 1
+	},
+	{
+		"id": 2,
+		"name": "Makarona Bashamel",
+		"age": 23,
+		"birthdate": "2011-09-13",
+		"class_number": 3
+	},
+	{
+		"id": 3,
+		"name": "El Fnana Ruby",
+		"age": 40,
+		"birthdate": "2011-09-13",
+		"class_number": 1
+	},
+	{
+		"id": 4,
+		"name": "Ahmed Fathi",
+		"age": 21,
+		"birthdate": "2011-09-13",
+		"class_number": 3
+	},
+	{
+		"id": 5,
+		"name": "potato potato",
+		"age": 21,
+		"birthdate": "2011-09-13",
+		"class_number": 3
+	}
+]
